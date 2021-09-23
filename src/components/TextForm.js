@@ -1,21 +1,38 @@
 import React, { useState } from 'react'
 
 export default function TextForm(props) {
+    //change to uppercase
     const handleUpClick = () => {
         let newText = text.toUpperCase();
         setText(newText)
     }
+    //change to lowercase
     const handleLoClick = () => {
         let newText = text.toLowerCase();
         setText(newText)
     }
+    //clear all text
     const handleClearClick = () => {
         let newText = "";
         setText(newText)
     }
+    //copy text to clipboard
+    const handleCopy = () => {
+        let text = document.getElementById('myBox')
+        text.select();
+        navigator.clipboard.writeText(text.value)
+    }
+    //handle whiteSpace
+    const handleExtraSpace = () => {
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "))
+    }
+
+    //change target values
     const handleOnChange = (event) => {
         setText(event.target.value);
     }
+
     const [text, setText] = useState('');
 
 
@@ -29,6 +46,8 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to UpperCase</button>
                 <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert to LowerCase</button>
                 <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear all text</button>
+                <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button>
+                <button className="btn btn-primary mx-1" onClick={handleExtraSpace}>Remove extra space</button>
 
             </div>
             <div className="container my-3">
