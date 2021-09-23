@@ -5,27 +5,32 @@ export default function TextForm(props) {
     const handleUpClick = () => {
         let newText = text.toUpperCase();
         setText(newText)
+        props.showAlert("Converted to uppercase!", "success")
     }
     //change to lowercase
     const handleLoClick = () => {
         let newText = text.toLowerCase();
         setText(newText)
+        props.showAlert("Converted to lowercase!", "success")
     }
     //clear all text
     const handleClearClick = () => {
         let newText = "";
         setText(newText)
+        props.showAlert("All cleared!", "success")
     }
     //copy text to clipboard
     const handleCopy = () => {
         let text = document.getElementById('myBox')
         text.select();
         navigator.clipboard.writeText(text.value)
+        props.showAlert("Text copied to clipboard!", "success")
     }
     //handle whiteSpace
     const handleExtraSpace = () => {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "))
+        props.showAlert("Extra spaces removed!", "success")
     }
 
     //change target values
@@ -55,7 +60,7 @@ export default function TextForm(props) {
                 <p>{text.split(" ").length} words and {text.length} characters</p>
                 <p>{0.008 * text.split(" ").length} Minutes read</p>
                 <h2>Preview</h2>
-                <p>{text.length>0?text:"Enter something in the textbox to preview it here "}</p>
+                <p>{text.length > 0 ? text : "Enter something in the textbox to preview it here "}</p>
             </div>
         </>
     )
