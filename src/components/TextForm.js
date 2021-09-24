@@ -33,6 +33,7 @@ export default function TextForm(props) {
         props.showAlert("Extra spaces removed!", "success")
     }
 
+
     //change target values
     const handleOnChange = (event) => {
         setText(event.target.value);
@@ -54,10 +55,11 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button>
                 <button className="btn btn-primary mx-1" onClick={handleExtraSpace}>Remove extra space</button>
 
+
             </div>
             <div className="container my-3" style={{ color: props.mode === 'dark' ? 'white' : '#042743' }}>
                 <h2>Your text Summary</h2>
-                <p>{text.split(" ").length} words and {text.length} characters</p>
+                <p>{text.split(" ").length-1} words and {text.length} characters</p>
                 <p>{0.008 * text.split(" ").length} Minutes read</p>
                 <h2>Preview</h2>
                 <p>{text.length > 0 ? text : "Enter something in the textbox to preview it here "}</p>
