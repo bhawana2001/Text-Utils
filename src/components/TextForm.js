@@ -70,13 +70,13 @@ export default function TextForm(props) {
                 <div className="mb-3">
                     <textarea className="form-control" value={text} onChange={handleOnChange} style={{ backgroundColor: props.mode === 'dark' ? '#13466e' : 'white', color: props.mode === 'dark' ? 'white' : '#042743' }} id="myBox" rows="8"></textarea>
                 </div>
-                <button className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to UpperCase</button>
-                <button className="btn btn-primary mx-1 my-1" onClick={handleLoClick}>Convert to LowerCase</button>
-                <button className="btn btn-primary mx-1 my-1" onClick={handleClearClick}>Clear all text</button>
-                <button className="btn btn-primary mx-1 my-1" onClick={handleCopy}>Copy Text</button>
-                <button className="btn btn-primary mx-1 my-1" onClick={handleExtraSpace}>Remove extra space</button>
-                <button className="btn btn-primary mx-1 my-1" onClick={capitalizeFirstLet}>Capitalize first letter</button>
-                <button className="btn btn-primary mx-1 my-1" onClick={capitalizeAllFirstLet}>Capitalize all first letter</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to UpperCase</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleLoClick}>Convert to LowerCase</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleClearClick}>Clear all text</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleCopy}>Copy Text</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpace}>Remove extra space</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={capitalizeFirstLet}>Capitalize first letter</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={capitalizeAllFirstLet}>Capitalize all first letter</button>
 
 
 
