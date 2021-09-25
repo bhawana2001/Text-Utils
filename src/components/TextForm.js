@@ -33,6 +33,27 @@ export default function TextForm(props) {
         props.showAlert("Extra spaces removed!", "success")
     }
 
+    //to capitalize first letter
+    const capitalizeFirstLet = () => {
+
+        let firstLett = text.charAt(0);
+        let newLetter = firstLett.toUpperCase();
+        setText(newLetter + text.slice(1));
+        props.showAlert("Capitalized first letter", "success")
+    }
+
+    //capitalize all first letters
+    const capitalizeAllFirstLet = () => {
+        let arr = text.toString().split(" ")
+        let i;
+        for (i = 0; i < arr.length; i++) {
+            let ele = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+            arr[i] = ele
+        }
+        let newText = arr.toString().replace(/,/g, " ");
+        setText(newText)
+        props.showAlert("Capitalized all first letters", "success")
+    }
 
     //change target values
     const handleOnChange = (event) => {
@@ -54,12 +75,15 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear all text</button>
                 <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button>
                 <button className="btn btn-primary mx-1" onClick={handleExtraSpace}>Remove extra space</button>
+                <button className="btn btn-primary mx-1" onClick={capitalizeFirstLet}>Capitalize first letter</button>
+                <button className="btn btn-primary mx-1" onClick={capitalizeAllFirstLet}>Capitalize all first letter</button>
+
 
 
             </div>
             <div className="container my-3" style={{ color: props.mode === 'dark' ? 'white' : '#042743' }}>
                 <h2>Your text Summary</h2>
-                <p>{text.split(" ").length-1} words and {text.length} characters</p>
+                <p>{text.split(" ").filter((element) => { return element.length !== 0 }).length} words and {text.length} characters</p>
                 <p>{0.008 * text.split(" ").length} Minutes read</p>
                 <h2>Preview</h2>
                 <p>{text.length > 0 ? text : "Enter something in the textbox to preview it here "}</p>
